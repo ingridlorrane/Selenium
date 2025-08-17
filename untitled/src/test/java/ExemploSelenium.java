@@ -21,7 +21,7 @@ public class ExemploSelenium {
         //Preencher email
         driver.findElement(By.xpath("//input[@type='email']")).sendKeys("ingrid@gmail.com.com");
         //Preencher telefone
-        driver.findElement(By.xpath("//input[@type='tel']")).sendKeys("89326365");
+        driver.findElement(By.xpath("//input[@type='tel']")).sendKeys("1234567890");
         //Selecionar sexo
         driver.findElement(By.xpath("//input[@value='FeMale']")).click();
         //Selecionar hobby
@@ -58,5 +58,10 @@ public class ExemploSelenium {
         Select select4 = new Select(driver.findElement(By.xpath("//select[@placeholder='Day']")));
         select4.selectByVisibleText("1");
         driver.findElement(By.xpath("//div[@class='container center']")).click();
+        //Adicionar senha
+        driver.findElement(By.xpath("//input[@id='firstpassword']")).sendKeys("123");
+        driver.findElement(By.xpath("//input[@id='secondpassword']")).sendKeys("123");
+        //Clicar em salvar
+        driver.findElement(By.xpath("//button[@id='submitbtn']")).click();
             }
 }
