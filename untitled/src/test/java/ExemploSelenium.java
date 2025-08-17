@@ -62,6 +62,13 @@ public class ExemploSelenium {
         driver.findElement(By.xpath("//input[@id='firstpassword']")).sendKeys("123");
         driver.findElement(By.xpath("//input[@id='secondpassword']")).sendKeys("123");
         //Clicar em salvar
-        driver.findElement(By.xpath("//button[@id='submitbtn']")).click();
-            }
+        //driver.findElement(By.xpath("//button[@id='submitbtn']")).click();
+        //Seleciobnar arquivo
+        // Envia o arquivo diretamente para o input de upload
+        driver.findElement(By.id("imagesrc"))
+                .sendKeys("C:\\Users\\sqlin\\Downloads\\Currículo lucas.docx.pdf");
+
+
+
+    }
 }
