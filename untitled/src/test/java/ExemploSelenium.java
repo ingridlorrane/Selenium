@@ -1,12 +1,17 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.Select;
 
 public class ExemploSelenium {
-    public static void main(String[] args) {
-        WebDriver driver = new ChromeDriver();
+    public static void main(String[] args) throws InterruptedException {
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--incognito"); // abre em modo anônimo
+        WebDriver driver = new ChromeDriver(options);
         driver.get("https://demo.automationtesting.in/Register.html");
         driver.manage().window().maximize();
+
         //Selecionar o primeiro nome
         driver.findElement(By.xpath("//input[@placeholder='First Name']")).sendKeys("Ingrid");
         //Selecionar Segund nome
@@ -24,9 +29,34 @@ public class ExemploSelenium {
         //Expandir lista
         driver.findElement(By.xpath("//div[@id='msdd']")).click();
         //Clicar no idioma
-        driver.findElement(By.xpath("//a[normalize-space()='Arabic']")).click();
         Thread.sleep(1000); //Tempo para garantir que a lista foi carregada
+        driver.findElement(By.xpath("//a[normalize-space()='Arabic']")).click();
         //Clicar fora da tela
         driver.findElement(By.xpath("//div[@class='container center']")).click();
-    }
+        //Clicar em skills
+        driver.findElement(By.xpath("//select[@id='Skills']")).click();
+        //Selecionar skills
+        Select select = new Select(driver.findElement(By.xpath("//select[@id='Skills']")));
+        select.selectByVisibleText("Java");
+        //Clicar fora da tela
+        driver.findElement(By.xpath("//div[@class='container center']")).click();
+        //Selecionar country
+        driver.findElement(By.xpath("//span[@role='combobox']")).click();
+        driver.findElement(By.xpath("//li[contains(text(),'Bangladesh')]")).click();
+        //Selecionar data de aniversário
+        driver.findElement(By.xpath("//select[@id='yearbox']")).click();
+        Select select2 = new Select(driver.findElement(By.xpath("//select[@id='yearbox']")));
+        select2.selectByVisibleText("1993");
+        driver.findElement(By.xpath("//div[@class='container center']")).click();
+        //Selecionar mes
+        driver.findElement(By.xpath("//select[@placeholder='Month']")).click();
+        Select select3 = new Select(driver.findElement(By.xpath("//select[@placeholder='Month']")));
+        select3.selectByVisibleText("January");
+        driver.findElement(By.xpath("//div[@class='container center']")).click();
+        //Selecionar dia
+        driver.findElement(By.xpath("//select[@placeholder='Day']")).click();
+        Select select4 = new Select(driver.findElement(By.xpath("//select[@placeholder='Day']")));
+        select4.selectByVisibleText("1");
+        driver.findElement(By.xpath("//div[@class='container center']")).click();
+            }
 }
